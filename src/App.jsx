@@ -143,7 +143,7 @@ function App() {
         padding: "2.5rem 2rem 2rem 2rem",
         background:
           theme === "dark"
-            ? "rgba(24,24,27,0.92)"
+            ? "rgba(86, 86, 86, 0.92)"
             : "rgba(255,255,255,0.92)",
         borderRadius: "2rem",
         boxShadow:
@@ -208,7 +208,7 @@ function App() {
           justifyContent: "center"
         }}>
           <div style={{ textAlign: "center" }}>
-            <label htmlFor="fromLang" style={{ fontWeight: 700, color: "#6366f1", fontSize: "1.05rem" }}>From</label>
+            <label htmlFor="fromLang" style={{ fontWeight: 700, color: "#6366f1", fontSize: "1.3rem" }}>From</label>
             <select
               id="fromLang"
               value={fromLang}
@@ -231,7 +231,7 @@ function App() {
             </select>
           </div>
           <div style={{ textAlign: "center" }}>
-            <label htmlFor="toLang" style={{ fontWeight: 700, color: "#06b6d4", fontSize: "1.05rem" }}>To</label>
+            <label htmlFor="toLang" style={{ fontWeight: 700, color: "#06b6d4", fontSize: "1.3rem" }}>To</label>
             <select
               id="toLang"
               value={toLang}
@@ -285,9 +285,9 @@ function App() {
                 marginBottom: 0,
                 padding: "1.2rem 1rem",
                 borderRadius: "1.2rem",
-                border: theme === "dark" ? "1.5px solid #334155" : "1.5px solid #c7d2fe",
+                border: theme === "dark" ? "1.5px solid #626c7aff" : "1.5px solid #c7d2fe",
                 fontSize: "1.15rem",
-                background: theme === "dark" ? "#18181b" : "#fff",
+                background: theme === "dark" ? "#4a4a53ff" : "#fff",
                 boxShadow: theme === "dark"
                   ? "0 2px 8px 0 rgba(31, 38, 135, 0.12)"
                   : "0 2px 8px 0 rgba(99, 102, 241, 0.08)",
@@ -334,7 +334,7 @@ function App() {
             <div style={{
               padding: "1.5rem 1rem",
               background: theme === "dark"
-                ? "linear-gradient(90deg, #18181b 0%, #334155 100%)"
+                ? "linear-gradient(90deg, #4b4b51ff 0%, #39485eff 100%)"
                 : "linear-gradient(90deg, #e0e7ff 0%, #f0fdfa 100%)",
               borderRadius: "1.2rem",
               boxShadow: theme === "dark"
@@ -343,26 +343,30 @@ function App() {
               textAlign: "center",
               animation: "fadeIn 0.8s",
               minHeight: "120px",
-              border: theme === "dark" ? "1.5px solid #334155" : "1.5px solid #e0e7ff",
+             border: theme === "dark" ? "1.5px solid #626c7aff" : "1.5px solid #c7d2fe",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center"
             }}>
-              <strong style={{
-                fontSize: "1.25rem",
-                color: theme === "dark" ? "#38bdf8" : "#06b6d4",
-                fontWeight: 800,
-                letterSpacing: "0.5px",
-                marginBottom: "0.5rem"
-              }}>Translation</strong>
-              <p style={{
-                marginTop: "1rem",
-                fontSize: "1.18rem",
-                color: theme === "dark" ? "#e0e7ff" : "#374151",
-                fontWeight: 500,
-                wordBreak: "break-word",
-                lineHeight: 1.6
-              }}>{translation}</p>
+              { translation ? (
+                <p style={{
+                  marginTop: "1rem",
+                  fontSize: "1.18rem",
+                  color: theme === "dark" ? "#e0e7ff" : "#374151",
+                  fontWeight: 500,
+                  wordBreak: "break-word",
+                  lineHeight: 1.6,
+                  fontWeight:"bold"
+                }}>{translation}</p>
+              ) : (
+                <strong style={{
+                  fontSize: "1.25rem",
+                  color: theme === "dark" ? "#38bdf8" : "#06b6d4",
+                  fontWeight: 800,
+                  letterSpacing: "0.5px",
+                  marginBottom: "0.5rem",
+                }}>Please set a text to</strong>
+              )}
             </div>
           </div>
         </div>
