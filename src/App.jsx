@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, createContext, useContext } from "react";
+import { GoogleGenAI } from "@google/genai";
 
 // ThemeContext for global theme state
 const ThemeContext = createContext();
@@ -23,7 +24,12 @@ function useTheme() {
 }
 import axios from "axios";
 
+const ai = new GoogleGenAI({
+  apiKey: "AIzaSyBmuzqdiDo-WngHbEjRXizP51zr6NeWr6I"
+});
+
 function App() {
+
   const [text, setText] = useState("");
   const [translation, setTranslation] = useState("");
   const [loading, setLoading] = useState(false);
@@ -54,12 +60,12 @@ function App() {
     }
     setLoading(true);
     try {
-      const res = await axios.post("/api/translate", {
-        text: inputText,
-        from,
-        to,
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: `Translate the following text from ${from} to ${to}: ${text}. give me the translation only, without any additional text.`,
       });
-      setTranslation(res.data.translation);
+
+      setTranslation(response);
     } catch (err) {
       console.error(err);
       setTranslation("Error: Failed to translate.");
