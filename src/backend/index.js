@@ -2,12 +2,15 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import { GoogleGenAI } from "@google/genai";
-
+import path from "path";
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
+const __dirname = path.resolve();
 
 const PORT = 5000;
 
@@ -38,6 +41,13 @@ app.post("/api/translate", async (req, res) => {
 
   
 });
+
+app.use(express.static(path.join(__dirname, "/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+})
+
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

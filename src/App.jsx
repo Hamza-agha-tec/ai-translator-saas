@@ -54,7 +54,7 @@ function App() {
     }
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/translate", {
+      const res = await axios.post("/api/translate", {
         text: inputText,
         from,
         to,
