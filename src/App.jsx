@@ -65,6 +65,8 @@ function App() {
         contents: `Translate the following text from ${from} to ${to}: ${text}. give me the translation only, without any additional text.`,
       });
 
+      console.log(response);
+
       setTranslation(response);
     } catch (err) {
       console.error(err);
